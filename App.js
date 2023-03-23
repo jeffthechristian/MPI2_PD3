@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, //Dimensions,
+ TouchableOpacity } from 'react-native';
 import Constants from 'expo-constants';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
@@ -9,6 +10,7 @@ const API_KEY = '126c56d5cb7bfcc040bdb11c937105f9';
 const App = () => {
   const [location, setLocation] = useState(null);
   const [weather, setWeather] = useState(null);
+
 
   useEffect(() => {
     (async () => {
@@ -63,6 +65,21 @@ const App = () => {
           <Text style={styles.weatherText}>
             {weather.name}: {weather.weather[0].main} ({weather.main.temp}°C)
           </Text>
+          <Text style={styles.weatherText}>
+            
+          </Text>
+          <Text style={styles.weatherText}>
+            lat: {location.latitude} 
+          </Text>
+          <Text style={styles.weatherText}>
+            long: {location.longitude} 
+          </Text>
+          <Text style={styles.weatherText}>
+            humidity: {weather.main.humidity}  
+          </Text>
+          <Text style={styles.weatherText}>
+             pressure: {weather.main.pressure}
+          </Text>
         </View>
       )}
       <View style={styles.header}>
@@ -81,6 +98,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
+    
   },
   header: {
     position: 'absolute',
@@ -95,32 +113,35 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#fff',
+    top: 20,
     borderRadius: 10,
-    borderWidth: 1,
+    borderWidth: 0.1,
     borderColor: '#ccc',
     paddingVertical: 20,
     paddingHorizontal: 20,
     marginHorizontal: 10,
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   map: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    width: '100%',
+    height: '100%',
   },
   weatherContainer: {
     position: 'absolute',
-    bottom: 20,
-    left: 20,
-    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    top: 150,
+    left: 50,
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
     padding: 10,
     borderRadius: 10,
     minWidth: 200,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 10,
+    marginHorizontal: 45,
   },
   weatherText: {
     fontSize: 16,
